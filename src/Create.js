@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-
+import {useHistory} from "react-router-dom";
 
 function Create() {
     const [title, settitle] = useState('');
     const [body, setbody] = useState('');
     const [author, setauthor] = useState('mario');
     const [isPending,setisPending]=useState(false);
+    const h=useHistory();
 
     const handleSubmit = (e) =>
     {
@@ -18,6 +19,7 @@ function Create() {
             body: JSON.stringify(blog)
         }).then(()=>{
             setisPending(false)
+            h.push('/')
         }
         )
     }
