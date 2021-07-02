@@ -1,11 +1,36 @@
-import React from 'react'
+import React,{useState} from 'react'
+
 
 function Create() {
+    const [title, settitle] = useState('');
+    const [body, setbody] = useState('');
+    const [author, setauthor] = useState('mario');
+
     return (
+        <div className="create">
         <div>
             <h1>Add A Blog</h1>
+        <form>
+            <label>Blog title:</label>
+            <input type="text"
+            required
+            value={title}
+            onChange={(e)=> settitle(e.target.value)}
+            ></input>
+            <label>Blog Content:</label>
+            <textarea required
+            value={body}
+            onChange={(e)=> setbody(e.target.value)}
+            ></textarea>
+            <select value={author} onChange={(e)=> setauthor(e.target.value)}>
+                <option value="mario">mario</option>
+                <option value="yoshi">yoshi</option>
+            </select>
+            <button>Add Blog</button>
+        </form>
+        </div>
         </div>
     )
 }
 
-export default Create
+export default Create;
